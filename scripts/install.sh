@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # =============================================================================
-# GeyserSteam Valve Controller — One-line installer
+# Likk Large Valve Controller — One-line installer
 # Usage:
-#   wget -qO- https://raw.githubusercontent.com/YOUR_ORG/geysersteam-valve/main/scripts/install.sh | bash
+#   wget -qO- https://raw.githubusercontent.com/termic1/likk-large-valve/main/scripts/install.sh | bash
 #
 # What this script does:
 #   1. Installs system dependencies (Python packages, ModemManager, qmicli)
-#   2. Clones the repository to ~/geysersteam-valve
+#   2. Clones the repository to ~/likk-large-valve
 #   3. Converts JSON config templates to pickle files the controller reads
 #   4. Installs udev rules for the GL7611 modem
 #   5. Installs and enables the systemd service
@@ -15,8 +15,8 @@
 
 set -e  # exit on any error
 
-REPO_URL="https://github.com/YOUR_ORG/geysersteam-valve.git"
-INSTALL_DIR="$HOME/geysersteam-valve"
+REPO_URL="https://github.com/termic1/likk-large-valve.git"
+INSTALL_DIR="$HOME/likk-large-valve"
 SERVICE_NAME="valve"
 PYTHON="python3"
 
@@ -38,7 +38,7 @@ fi
 
 echo -e "${BOLD}"
 echo "╔══════════════════════════════════════════════════════╗"
-echo "║   GeyserSteam Water Valve Controller — Installer    ║"
+echo "║   Likk Large Water Valve Controller — Installer    ║"
 echo "╚══════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 info "Installing for user: $WHOAMI"
@@ -90,7 +90,7 @@ section "Step 3/6: Generating configuration files"
 $PYTHON - << 'PYEOF'
 import json, pickle, os
 
-install_dir = os.path.expanduser("~/geysersteam-valve")
+install_dir = os.path.expanduser("~/likk-large-valve")
 
 # comandos.dat
 with open(f"{install_dir}/config/config_template.json") as f:
@@ -131,7 +131,7 @@ section "Step 5/6: Installing systemd service"
 
 # Patch the service file with the actual username and install dir
 sed "s|User=pi|User=$WHOAMI|g; s|Group=pi|Group=$WHOAMI|g; \
-     s|/home/pi/geysersteam-valve|$INSTALL_DIR|g" \
+     s|/home/pi/likk-large-valve|$INSTALL_DIR|g" \
     "$INSTALL_DIR/systemd/valve.service" \
     | sudo tee /etc/systemd/system/${SERVICE_NAME}.service > /dev/null
 
@@ -178,7 +178,7 @@ SECRETSEOF
     # Update APN and broker index in pickle config
     $PYTHON - << PYEOF2
 import pickle, os
-d = os.path.expanduser("~/geysersteam-valve")
+d = os.path.expanduser("~/likk-large-valve")
 for fname in ["comandos.dat", "comandosbac.dat"]:
     with open(f"{d}/{fname}", "rb") as f:
         datos = pickle.load(f)
