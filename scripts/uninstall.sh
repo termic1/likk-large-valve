@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GeyserSteam Valve Controller — Uninstaller
+# Likk Large Valve Controller — Uninstaller
 set -e
 
 echo "Stopping and disabling valve service..."
@@ -12,5 +12,5 @@ echo "Removing udev rules..."
 sudo rm -f /etc/udev/rules.d/99-gl7611.rules
 sudo udevadm control --reload-rules
 
-echo "Done. The install directory ~/geysersteam-valve was NOT removed."
-echo "To fully remove: rm -rf ~/geysersteam-valve"
+echo "Done. The install directory ~/likk-large-valve was NOT removed."
+echo "To fully remove: rm -rf ~/likk-large-valve"
