@@ -1,6 +1,6 @@
 [Unit]
-Description=GeyserSteam Water Valve MQTT Controller
-Documentation=https://github.com/YOUR_ORG/geysersteam-valve
+Description=Likk Large Water Valve MQTT Controller
+Documentation=https://github.com/termic1/likk-large-valve
 After=network-online.target
 Wants=network-online.target
 
@@ -8,8 +8,8 @@ Wants=network-online.target
 Type=simple
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/geysersteam-valve
-ExecStart=/usr/bin/python3 /home/pi/geysersteam-valve/valve_controller.py
+WorkingDirectory=/home/pi/likk-large-valve
+ExecStart=/usr/bin/python3 /home/pi/likk-large-valve/valve_controller.py
 Restart=always
 RestartSec=30
 StandardOutput=journal
