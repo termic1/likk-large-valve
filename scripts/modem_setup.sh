@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# GeyserSteam — Modem Setup & Diagnostic Script
+# Likk Large Valve — Modem Setup & Diagnostic Script
 # Run this manually to test the GL7611 modem connection independently
 # of the valve controller service.
 #
@@ -26,7 +26,7 @@ warn() { echo -e "${YELLOW}  !${NC} $*"; }
 TEST_ONLY=false
 [[ "${1}" == "--test-only" ]] && TEST_ONLY=true
 
-echo -e "${BOLD}GeyserSteam GL7611 Modem Setup${NC}"
+echo -e "${BOLD}Likk-large Valve GL7611 Modem Setup${NC}"
 echo "────────────────────────────────"
 
 # ── Read APN from config if available ────────────────────────────────────────
