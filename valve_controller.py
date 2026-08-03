@@ -1,7 +1,7 @@
 """
 Water Valve MQTT Controller
 Version: 203
-Hardware: Raspberry Pi + SIM7600H-H (SimTech) cellular modem via USB
+Hardware: Raspberry Pi + SIM7600H-H (SimTech) cellular modem (update: GL7611) via USB
 Fixes vs v201:
   - keepalive reduced to 60s to prevent broker-side timeout kills
   - client.connect() always passes port + keepalive consistently
@@ -63,7 +63,7 @@ MACHINE_ID = "000001"
 TELEG      = False
 ABRIR      = "1"
 CERRAR     = "0"
-rootDir    = "/home/pi/likk-large-valve/"
+rootDir    = "/home/pi/likk-large-valve/" #if user is different than pi change rootDir
 BUILDING   = "00"
 BROKER_NO  = 4
 BROKER_ALT = False
