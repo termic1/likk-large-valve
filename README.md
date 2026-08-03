@@ -1,4 +1,4 @@
-# GeyserSteam — Water Valve MQTT Controller
+# Likk — Water Valve MQTT Controller
 
 Remote control system for a motorized water valve (riser or main supply line) in a large building. Runs on a Raspberry Pi with a Sierra Wireless GL7611 LTE cellular modem, communicates via MQTT, and survives reboots and network outages automatically.
 
@@ -30,12 +30,12 @@ Data sessions are managed via `qmicli` (part of `libqmi-utils`). ModemManager is
 On a fresh Raspberry Pi OS (Bookworm/Bullseye/Buster), run:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/YOUR_ORG/geysersteam-valve/main/scripts/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/termic1/likk-large-valve/main/scripts/install.sh | bash
 ```
 
 This will:
 1. Install all system and Python dependencies
-2. Clone the repository to `~/geysersteam-valve`
+2. Clone the repository to `~/likk-large-valve`
 3. Generate the pickle config files from JSON templates
 4. Install udev rules for the GL7611
 5. Install and enable the `valve` systemd service
@@ -60,8 +60,8 @@ sudo apt-get install -y git python3-pip libqmi-utils modemmanager
 pip3 install paho-mqtt==1.6.1
 
 # 2. Clone
-git clone https://github.com/YOUR_ORG/geysersteam-valve.git ~/geysersteam-valve
-cd ~/geysersteam-valve
+git clone https://github.com/termic1/likk-large-valve.git ~/likk-large-valve
+cd ~/likk-large-valve
 
 # 3. Run installer
 bash scripts/install.sh
@@ -72,7 +72,7 @@ bash scripts/install.sh
 ## Repository Structure
 
 ```
-geysersteam-valve/
+likk-large-valve/
 ├── valve_controller.py      # Main application
 ├── valve.py                 # Hardware abstraction (GPIO, LEDs, buttons)
 ├── Secrets.py               # Credentials — NOT in git (see .gitignore)
@@ -139,7 +139,7 @@ Stored as a Python pickle file, editable via MQTT commands at runtime:
 All commands use `*` as delimiter:
 
 ```
-*{PASSWORD}*{command}*{param1}*{param2}*
+*{PASSWORD}*{command}*{param1}*{param2}
 ```
 
 ### Command Reference
@@ -171,13 +171,13 @@ All commands use `*` as delimiter:
 ### Examples
 
 ```
-*12345678*status*
-*12345678*openvalve*
-*12345678*closevalve*
-*12345678*apn*
-*12345678*apn*go.mono*
-*12345678*selectbroker*4*
-*12345678*restart*
+*12345678*status
+*12345678*openvalve
+*12345678*closevalve
+*12345678*apn
+*12345678*apn*go.mono
+*12345678*selectbroker*4
+*12345678*restart
 ```
 
 ---
@@ -207,7 +207,7 @@ journalctl -u valve -n 100
 Run the standalone modem diagnostic script:
 
 ```bash
-bash ~/geysersteam-valve/scripts/modem_setup.sh
+bash ~/likk-large-valve/scripts/modem_setup.sh
 ```
 
 This will check enumeration, serial ports, QMI device, raw_ip mode, start a data session, configure `wwan0`, and test internet connectivity independently of the valve controller.
