@@ -1,0 +1,15 @@
+# udev rules for Sierra Wireless GL7611 (WP7611)
+# Ensures consistent ttyUSB device naming and QMI device permissions
+# Install to: /etc/udev/rules.d/99-gl7611.rules
+
+# Grant dialout group access to all GL7611 serial ports
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68C0", \
+    GROUP="dialout", MODE="0664"
+
+# Grant dialout group access to QMI control device
+SUBSYSTEM=="usbmisc", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68C0", \
+    GROUP="dialout", MODE="0664"
+
+# Set raw_ip mode on wwan0 automatically when GL7611 is detected
+ACTION=="add", SUBSYSTEM=="net", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68C0", \
+    RUN+="/bin/sh -c 'echo Y > /sys/class/net/wwan0/qmi/raw_ip'"

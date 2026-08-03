@@ -1,0 +1,11 @@
+{
+  "1": { "name": "PWD",           "value": "12345678"  },
+  "2": { "name": "MASTER_PWD",    "value": "V5307110"  },
+  "3": { "name": "MACHINE_ID",    "value": "000001"    },
+  "4": { "name": "LIVE_TIME",     "value": "299"       },
+  "5": { "name": "LIVE_ACT",      "value": "0"         },
+  "6": { "name": "BUILDING",      "value": "00"        },
+  "7": { "name": "BROKER_NO",     "value": "4"         },
+  "8": { "name": "STATUS_PREOFF", "value": "1"         },
+  "9": { "name": "APN",           "value": "data.mono" }
+}

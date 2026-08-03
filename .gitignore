@@ -1,0 +1,24 @@
+# Credentials — NEVER commit these
+Secrets.py
+secrets.py
+
+# Runtime data files (pickle)
+*.dat
+tmp*.dat
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*~

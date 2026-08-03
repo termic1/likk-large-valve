@@ -1,0 +1,23 @@
+[Unit]
+Description=GeyserSteam Water Valve MQTT Controller
+Documentation=https://github.com/YOUR_ORG/geysersteam-valve
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/geysersteam-valve
+ExecStart=/usr/bin/python3 /home/pi/geysersteam-valve/valve_controller.py
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=valve-controller
+
+# Give the modem time to enumerate on boot before the script starts
+ExecStartPre=/bin/sleep 15
+
+[Install]
+WantedBy=multi-user.target
